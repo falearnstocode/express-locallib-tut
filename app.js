@@ -14,7 +14,14 @@ var app = express();
 var mongoose = require('mongoose');
 
 //Set up mongoose connection
-var mongoDB = 'mongodb://localhost/local_library';        // var mongoDB = 'insert_your_database_url_here';
+
+/* 
+  OLD HARD CODE
+  var mongoDB = 'mongodb://localhost/local_library';        // var mongoDB = 'insert_your_database_url_here';
+ */
+
+// var mongoDB = process.env.MONGODB_URI || 'mongodb://your_user_id:your_password@ds119748.mlab.com:19748/local_library';
+var mongoDB = process.env.MONGODB_URI || 'mongodb://localhost/local_library';
 
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
